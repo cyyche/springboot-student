@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kby.student.mapper.StudentMapper">
+
+    <select id="queryStudent" resultType="com.kby.student.entity.Student">
+        select s.studentNo,s.studentName,s.loginPwd,s.sex,s.gradeID,g.gradeName,s.phone,s.address from student s inner join grade g on s.gradeID=g.gradeID
+        <where>
+            <if test="stuNo != null">
+                and s.studentNo=#{stuNo}
+            </if>
+            <if test="stuName != null and stuName !=''">
+                and s.studentName like concat('%',#{stuName},'%')
+            </if>
+        </where>
+    </select>
+
+<!--    <select id="queryPage" resultType="com.kby.student.entity.Student">-->
+<!--        select s.studentNo,s.studentName,s.loginPwd,s.sex,s.gradeID,g.gradeName,s.phone,s.address from student s inner join grade g on s.gradeID=g.gradeID-->
+<!--        <where>-->
+<!--            <if test="stuNo != null">-->
+<!--                and s.studentNo=#{stuNo}-->
+<!--            </if>-->
+<!--            <if test="stuName != null and stuName !=''">-->
+<!--                and s.studentName like concat('%',#{stuName},'%')-->
+<!--            </if>-->
+<!--        </where>-->
+<!--        limit #{index},#{pageSize}-->
+<!--    </select>-->
+
+<!--    <select id="getTotalCount" resultType="java.lang.Integer">-->
+<!--        select count(1) from student s inner join grade g on s.gradeID=g.gradeID-->
+<!--        <where>-->
+<!--            <if test="stuNo != null">-->
+<!--                and s.studentNo=#{stuNo}-->
+<!--            </if>-->
+<!--            <if test="stuName != null and stuName !=''">-->
+<!--                and s.studentName like concat('%',#{stuName},'%')-->
+<!--            </if>-->
+<!--        </where>-->
+<!--    </select>-->
+
+
+
+
+<!--    <insert id="add" >-->
+<!--        insert into student(studentNo,studentName,loginPwd,sex,gradeID,phone,address) values-->
+<!--        (#{stu.studentNo},#{stu.studentName},#{stu.loginPwd},#{stu.sex},#{stu.gradeID},#{stu.phone},#{stu.address})-->
+<!--    </insert>-->
+
+<!--    <delete id="del">-->
+<!--        delete from student where studentNo=#{stuNo}-->
+<!--    </delete>-->
+
+    <select id="queryByNo" resultType="com.kby.student.entity.Student">
+        select studentNo,studentName,loginPwd,sex,gradeID,phone,address from student
+        <where>
+            studentNo=#{stuNo}
+        </where>
+    </select>
+
+<!--    <update id="update">-->
+<!--        update student set studentName=#{stu.studentName},loginPwd=#{stu.loginPwd},sex=#{stu.sex},gradeID=#{stu.gradeID},phone=#{stu.phone},address=#{stu.address} where studentNo=#{stu.studentNo}-->
+<!--    </update>-->
+</mapper>

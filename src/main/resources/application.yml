@@ -1,0 +1,29 @@
+# \u5E94\u7528\u670D\u52A1 WEB \u8BBF\u95EE\u7AEF\u53E3
+server:
+  #项目端口号
+  port: 8081
+  #项目访问路径
+  servlet:
+    context-path: /stu
+
+spring:
+  #数据库连接
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/myschool?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=false
+    username: root
+    password: root
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+    timeout: 180000
+
+#mybatis配置
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: false
+
+#redis配置
+
